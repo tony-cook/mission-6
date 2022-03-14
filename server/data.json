@@ -1,0 +1,32 @@
+[
+    {
+      "type": "House",
+      "suburb": "Blockhouse Bay",
+      "location": "4 Heaphy Street , Blockhouse Bay , 600",
+      "price": 850
+    },
+    {
+      "type": "House",
+      "suburb": "Albany",
+      "location": "12 Mulu Place , Albany , 632",
+      "price": 990
+    },
+    {
+      "type": "Apartment",
+      "suburb": "Newmarket",
+      "location": "C716/176 Broadway , Newmarket , 1023",
+      "price": 530
+    },
+    {
+      "type": "Apartment",
+      "suburb": "Newmarket",
+      "location": "9/118 Broadway , Newmarket , 1023",
+      "price": 660
+    },
+    {
+      "type": "Apartment",
+      "suburb": "City Centre (Auckland City)",
+      "location": "Auckland City , City Centre (Auckland City) , 1010",
+      "price": 345
+    }
+  ]
