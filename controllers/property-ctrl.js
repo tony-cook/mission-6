@@ -103,7 +103,7 @@ createProperty = (req, res) => {
 // }
 
 getPropertys = async (req, res) => {
-    await Property.find({}, (err, movies) => {
+    await Property.find({}, (err, property) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -112,7 +112,7 @@ getPropertys = async (req, res) => {
                 .status(404)
                 .json({ success: false, error: `Property not found` })
         }
-        return res.status(200).json({ success: true, data: movies })
+        return res.status(200).json({ success: true, data: property })
     }).catch(err => console.log(err))
 }
 

@@ -5,7 +5,8 @@ mongoose
     .catch(e => {
         console.error('Connection error', e.message)
     });
-    console.log('Database connected successfully')
+    console.log('Database connected successfully');
+
 
 const db = mongoose.connection
 
