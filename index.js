@@ -18,22 +18,25 @@ app.use(bodyParser.json())
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-async function CheckDataExists (req, res) {
+async function populateData (req, res) {
     await Property.find({}, (err, property) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
-        }
-        if (!property.length) {
+        if(!property.length) {
             Property.insertMany(data).then(function(){
-                console.log("Existing data added to database")
+                console.log("Data added to database")
             }).catch(function(error){
                 console.log(error)
             });
         }
     }).clone().catch(err => console.log(err))
 }
-
-CheckDataExists()
+populateData()
+// if (!dataExists) {
+//     Property.insertMany(data).then(function(){
+//         console.log("Existing data added to database")
+//     }).catch(function(error){
+//         console.log(error)
+//     });
+// } else console.log('here')
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
