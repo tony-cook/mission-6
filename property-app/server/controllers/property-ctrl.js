@@ -114,10 +114,35 @@ getPropertys = async (req, res) => {
     .catch(err => console.log(err));
 };
 
+quickSortProperties = async (req, res) => {
+  let sortKey = req.params.key;
+  const properties = await Property.find({});
+
+  function quickSort(array, key) {
+    if (array.length < 2) return array;
+
+    let pivotValue = array[0];
+    let pivot = array[0][key];
+    let left = [];
+    let right = [];
+
+    for (let i = 1; i < array.length; i++) {
+      if (array[i][key] < pivot) left.push(array[i]);
+      else right.push(array[i]);
+    }
+    return [...quickSort(left, key), pivotValue, ...quickSort(right, key)];
+  }
+
+  const result = quickSort(properties, sortKey);
+
+  return res.status(200).json({ success: true, data: result });
+};
+
 module.exports = {
   createProperty,
   updateProperty,
   deleteProperty,
   getPropertys,
-  getPropertyById
+  getPropertyById,
+  quickSortProperties
 };
