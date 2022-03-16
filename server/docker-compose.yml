@@ -2,7 +2,7 @@ version: "3"
 services:
        node-server:
            container_name: node-server
-           image: server
+           image: mission6
            environment:
              - PORT=8000
            restart: always
