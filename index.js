@@ -14,29 +14,26 @@ const port = process.env.PORT || 8000;
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 app.use(bodyParser.json())
+seedData()
 
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-async function populateData (req, res) {
-    await Property.find({}, (err, property) => {
-        if(!property.length) {
-            Property.insertMany(data).then(function(){
-                console.log("Data added to database")
-            }).catch(function(error){
-                console.log(error)
-            });
-        }
-    }).clone().catch(err => console.log(err))
+async function seedData (req, res) {
+    const propertiesCursor = Property.find({});
+
+    const arePropertiesEmpty = (await propertiesCursor.count()) === 0;
+
+    if(arePropertiesEmpty) {
+        Property.insertMany(data).then(function(){
+            console.log("Data added to database")
+        }).catch(function(error){
+            console.log(error)
+        })
+    }
 }
-populateData()
-// if (!dataExists) {
-//     Property.insertMany(data).then(function(){
-//         console.log("Existing data added to database")
-//     }).catch(function(error){
-//         console.log(error)
-//     });
-// } else console.log('here')
+
+
 
 app.get('/', (req, res) => {
     res.send('Hello World!')

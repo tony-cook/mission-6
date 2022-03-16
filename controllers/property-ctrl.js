@@ -71,36 +71,32 @@ createProperty = (req, res) => {
 //     })
 // }
 
-// deleteMovie = async (req, res) => {
-//     await Movie.findOneAndDelete({ _id: req.params.id }, (err, movie) => {
-//         if (err) {
-//             return res.status(400).json({ success: false, error: err })
-//         }
+quickSortPropertysBySuburb = async (req, res) => {
+    const properties = await Property.find({})
 
-//         if (!movie) {
-//             return res
-//                 .status(404)
-//                 .json({ success: false, error: `Movie not found` })
-//         }
+    function quickSortSuburb (array) {
+        if (array.length < 2) 
+          return array;
+        
+        let pivotValue = array[0]
+        let pivot = array[0]['suburb'];
+        let left  = []; 
+        let right = [];
 
-//         return res.status(200).json({ success: true, data: movie })
-//     }).catch(err => console.log(err))
-// }
+        for (let i = 1; i < array.length; i++){
+            if (array[i]['suburb'] < pivot)
+                left.push(array[i]);
+            else
+                right.push(array[i]);
+            }
+            return [...quickSortSuburb(left),pivotValue,...quickSortSuburb(right)];
+        };
 
-// getMovieById = async (req, res) => {
-//     await Movie.findOne({ _id: req.params.id }, (err, movie) => {
-//         if (err) {
-//             return res.status(400).json({ success: false, error: err })
-//         }
+        const result = quickSortSuburb(properties)
 
-//         if (!movie) {
-//             return res
-//                 .status(404)
-//                 .json({ success: false, error: `Movie not found` })
-//         }
-//         return res.status(200).json({ success: true, data: movie })
-//     }).catch(err => console.log(err))
-// }
+        return res.status(200).json({ success: true, data: result })
+
+}
 
 getPropertys = async (req, res) => {
     await Property.find({}, (err, property) => {
@@ -112,14 +108,43 @@ getPropertys = async (req, res) => {
                 .status(404)
                 .json({ success: false, error: `Property not found` })
         }
+        console.log(property)
         return res.status(200).json({ success: true, data: property })
-    }).catch(err => console.log(err))
+    }).clone().catch(err => console.log(err))
+}
+
+quickSortPropertysByPrice = async (req, res) => {
+    const properties = await Property.find({})
+
+    function quickSortPrice (array) {
+        if (array.length < 2) 
+          return array;
+        
+        let pivotValue = array[0]
+        let pivot = array[0]['price'];
+        let left  = []; 
+        let right = [];
+
+        for (let i = 1; i < array.length; i++){
+            if (array[i]['price'] < pivot)
+                left.push(array[i]);
+            else
+                right.push(array[i]);
+            }
+            return [...quickSortPrice(left),pivotValue,...quickSortPrice(right)];
+        };
+
+        const result = quickSortPrice(properties)
+
+        return res.status(200).json({ success: true, data: result })
+
 }
 
 module.exports = {
     createProperty,
-    getPropertys
-
+    getPropertys,
+    quickSortPropertysByPrice,
+    quickSortPropertysBySuburb
 }
 // updateMovie,
 // deleteMovie,
