@@ -71,7 +71,7 @@ getPropertys = async (req, res) => {
                 .status(404)
                 .json({ success: false, error: `Property not found` })
         }
-        console.log(property)
+
         return res.status(200).json({ success: true, data: property })
     }).clone().catch(err => console.log(err))
 }

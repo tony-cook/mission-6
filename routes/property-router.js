@@ -6,8 +6,8 @@ const router = express.Router()
 
 router.post('/property', PropertyCtrl.createProperty)
 // router.put('/property/:id', PropertyCtrl.updateProperty)
-router.get('/property/quicksortsuburb', PropertyCtrl.quickSortPropertysBySuburb)
-router.get('/propertys/quicksortprice', PropertyCtrl.quickSortPropertysByPrice)
-router.get('/propertys', PropertyCtrl.getPropertys)
+router.get('/propertys/quicksort/suburb', PropertyCtrl.quickSortPropertysBySuburb)
+router.get('/propertys/quicksort/price', PropertyCtrl.quickSortPropertysByPrice)
+router.get('/propertys/all', PropertyCtrl.getPropertys)
 
 module.exports = router
