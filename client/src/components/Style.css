@@ -1,0 +1,60 @@
+/* Header component */
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(191, 22, 61);
+  height: 100px;
+}
+.logo-image {
+  margin-top: 5px;
+  height: 80px;
+}
+.navbar {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  font-weight: 500;
+  margin-top: 75px;
+}
+.navbar-button {
+  padding: 0px 30px;
+  border-right: 1px solid white;
+  cursor: pointer;
+}
+
+/* ListProperty component */
+
+.listings-container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(246, 245, 244);
+  width: 50%;
+}
+.single-listing-container {
+  inline-size: 300px;
+  padding: 20px 0;
+  margin-top: 10px;
+  border: 1px solid black;
+  border-radius: 1%;
+}
+.listing-price {
+  text-align: right;
+  font-weight: 700;
+  padding-right: 10px;
+}
+
+/* Content component */
+.button-container {
+  text-align: center;
+  margin-top: 50px;
+}
+.content-container {
+  display: flex;
+  margin-bottom: 50px;
+}
+button {
+  margin-left: 50px;
+}
