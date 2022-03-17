@@ -9,8 +9,8 @@ phases:
       - docker build -t tonycook/property-app-client ./client
       - docker build -t tonycook/property-app-api ./server
       - docker build -t tonycook/property-app-nginx ./nginx
-      # Log in to the Docker CLI
-      - echo "doitforthecode" | docker login -u "tonycook" --password-stdin
+  #     # Log in to the Docker CLI
+  #     - echo "$DOCKER_PW" | docker login -u "$DOCKER_ID" --password-stdin
   # post_build:
   #   commands:
   #     # Take these images and push them to Docker hub
