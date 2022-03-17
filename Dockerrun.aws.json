@@ -1,0 +1,33 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+      {
+        "name": "nginx",
+        "image": "tonycook/property-app-nginx",
+        "hostname": "nginx",
+        "essential": true,
+        "portMappings": [
+          {
+            "hostPort": 80,
+            "containerPort": 80
+          }
+        ],
+        "links": ["client", "api"],
+        "memory": 100
+      },
+      {
+        "name": "client",
+        "image": "tonycook/property-app-client",
+        "hostname": "client",
+        "essential": false,
+        "memory": 300
+      },
+      {
+        "name": "api",
+        "image": "tonycook/property-app-api",
+        "hostname": "api",
+        "essential": false,
+        "memory": 300
+      }
+    ]
+}
