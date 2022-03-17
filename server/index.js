@@ -9,7 +9,7 @@ const data = require('./data.json')
 const Property = require('./models/property-model')
 const db = require('./db')
 const propertyRouter = require('./routes/property-router')
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3001;
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())

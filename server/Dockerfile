@@ -2,14 +2,12 @@ FROM node:latest
 
 WORKDIR /app
 
-COPY package.json ./
-
-RUN npm install
-
+# Install dependencies
+COPY package.json .
+RUN npm install 
 COPY . .
 
-ENV PORT=8000
+EXPOSE 3001
 
-EXPOSE 8000
-
-CMD [ "npm", "start" ]
+# Default command
+CMD ["npm", "run", "start"]

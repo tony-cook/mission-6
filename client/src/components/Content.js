@@ -16,7 +16,7 @@ function Content() {
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/propertys/${fetchVariable}`)
+        axios.get(`api/api/propertys/${fetchVariable}`)
              .then(res => {
                  setListings(res.data.data)
                  setIsLoading(false)
