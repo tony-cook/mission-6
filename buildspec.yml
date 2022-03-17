@@ -1,4 +1,5 @@
 version: 0.2
+
 phases:
   build:
     commands:
@@ -10,10 +11,10 @@ phases:
       - docker build -t tonycook/property-app-nginx ./nginx
       # Log in to the Docker CLI
       - echo "doitforthecode" | docker login -u "tonycook" --password-stdin
-  post_build:
-    commands:
-      # Take these images and push them to Docker hub
-      - echo Pushing the Docker images...
-      - docker push tonycook/property-app-client
-      - docker push tonycook/property-app-api
-      - docker push tonycook/property-app-nginx
+  # post_build:
+  #   commands:
+  #     # Take these images and push them to Docker hub
+  #     - echo Pushing the Docker images...
+  #     - docker push tonycook/property-app-client
+  #     - docker push tonycook/property-app-api
+  #     - docker push tonycook/property-app-nginx
